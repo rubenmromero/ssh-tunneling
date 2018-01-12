@@ -2,7 +2,7 @@
 
 Tutorial and script to use SSH tunneling like a ninja
 
-## Staging point
+## Starting point
 
 Information security established as best practice, that accesses between different platform components or system must be implemented using the principle of least privilege. What has not happened, for instance, to have wanted to connect from a client installed on its computer to a remote database, which did not have a direct connection but does through another intermediate server (for example a bastion host)?
 
