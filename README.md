@@ -86,5 +86,5 @@ Once establishing the SSH tunnel, the local service will be accessible from any 
 
 If all of this appeals to you and you're eager to try some of this, I propose a couple of further links to exploration:
 
-* [Triple mortal tunnel (attention to bonus points)](http://ufasoli.blogspot.com.es/2013/11/multi-hop-ssh-tunnel-howto-creating-ssh.html)
+* [Triple mortal tunnel](http://ufasoli.blogspot.com.es/2013/11/multi-hop-ssh-tunnel-howto-creating-ssh.html) (attention to bonus points)
 * [SSH tunnel to multiple target services](http://www.linuxhorizon.ro/ssh-tunnel.html)
