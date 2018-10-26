@@ -24,7 +24,7 @@ Where:
 * `<user>` => User through who we have SSH accessto the hop machine (intermediate server).
 * `<hop_host>` => Hostname or IP address associated to the hop machine (intermediate server).
 
-Let’s look at couple of practical examples:
+Let’s look at a couple of practical examples:
 
     # Connection from port 54321 of your computer to internal RDS instance with PostgreSQL, through a public EC2 instance with access to the RDS instance
     $ ssh -L 54321:<rds_endpoint>:5432 <user>@<ec2_host>
