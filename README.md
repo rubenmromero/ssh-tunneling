@@ -18,7 +18,7 @@ Surely on more than one occasion you have seen it for yourself in some similar s
 
 Where:
 
-* `<local_port>` => Port that we want to open on the loopback interface (`lo`) on our computer as a result of the SSH tunnel. If port number to be opened is less than 1024 (privileged ports, such as 80 or 443), the ssh command must be run with root privileges.
+* `<local_port>` => Port that we want to open on the loopback interface (`lo`) of our computer as a result of the SSH tunnel. If port number to be opened is less than 1024 (privileged ports, such as 80 or 443), the ssh command must be run with root privileges.
 * `<target_host>` => Hostname or IP address associated to the target service against which we wish to establish a connection.
 * `<target_port>` => Port associated to the target service against which we wish to establish a connection.
 * `<user>` => User through who we have SSH accessto the hop machine (intermediate server).
@@ -32,11 +32,11 @@ Let’s look at a couple of practical examples:
     # Connection from port 80 of your computer to a web service protected by IP whitelist, through a server with access to that service
     $ sudo ssh -L 80:<service_url>:80 <user>@<server_host>
 
-After establishing the SSH tunnel, you can connect to the target service through the port that you have indicated in the `<local_port>` parameter opened on your computer (localhost). Since this port is associated to the loopback interface (127.0.0.1), it will only be accessible from your own computer in which the SSH tunnel has been run.
+After establishing the SSH tunnel, you can connect to the target service through the port that you have specified as `<local_port>` parameter, which is open on your computer (localhost). Since this port is associated to the loopback interface (127.0.0.1), it will only be accessible from your own computer in which the SSH tunnel has been run.
 
 ## Sharing is caring!
 
-Let's consider your willing to contribute to others: you decide you want to share the connection you have created through the SSH tunnel with other computers connected to the network. This way, they can also connect to the target service through the `<local_port>` port opened in your computer – so what then? The solution is to use the gateway mode (`-g`) and your colleagues will be grateful:
+Let's consider your willing to contribute to others: you decide you want to share the connection you have created through the SSH tunnel with other computers connected to the network. This way, they can also connect to the target service through the `<local_port>` port open on your computer, so what then? The solution is to use the gateway mode (`-g`) and your colleagues will be grateful:
 
     $ ssh -g -L <local_port>:<target_host>:<target_port> <user>@<hop_host>
 
@@ -52,13 +52,13 @@ When an SSH tunnel is performed in gateway mode, the `<local_port>` port is open
 
 ## Tunnels as daemons!
 
-Now that you have already shared the tunneled connection with your colleagues, it is very likely that you want to keep the SSH tunnel up for a long time. And so o it seems more comfortable to run it "daemonized" so that it does not depend on the terminal on which you have performed it. To achieve this, it is simply neccesary to add the `-fN` parameters to any of the ssh commands indicated above:
+Now that you have already shared the tunneled connection with your colleagues, it is very likely that you want to keep the SSH tunnel up for a long time, so it seems more comfortable to run it daemonized so that it does not depend on the terminal on which you have performed it. To achieve this, it is simply neccesary to add the `-fN` parameters to any of the ssh commands described above:
 
     $ ssh -fN [-g] -L <local_port>:<target_host>:<target_port> <user>@<hop_host>
 
 ## Publishing local services through reverse SSH tunnels in gateway mode
 
-Now that you have already shared the tunneled connection with your colleagues, it is very likely that you want to keep the SSH tunnel up for a long time. And so o it seems more comfortable to run it "daemonized" so that it does not depend on the terminal on which you have performed it. To achieve this, it is simply neccesary to add the `-fN` parameters to any of the ssh commands indicated above:
+Have you ever wanted to publish a service that you have configured or deployed on your computer, or a service that is accessible from your network, so that other people who are working from networks without direct connection to your computer and neither to your network? Well, if you have SSH access to any public server (for example a public EC2 instance), you already have 90% of the work done! Now you just need to perform a reverse SSH tunnel in gateway mode:
 
     $ ssh [-fN] -g -R <source_port>:<target_host>:<target_port> <user>@<source_host>
 
