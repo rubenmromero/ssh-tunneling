@@ -1,1 +1,8 @@
+title: SSH Tunneling
+description: Tutorial and script to use SSH tunneling like a ninja
+google_analytics: UA-133287190-1
+show_downloads: false
 theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
